@@ -18,6 +18,8 @@
       object-fit: cover;
       border-radius: 8px;
     }
+
+    /* 🔄 Cart Overlay */
     .cart-overlay {
       position: fixed;
       top: 70px;
@@ -32,17 +34,21 @@
       box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
       display: none;
     }
+
     .cart-item {
       border-bottom: 1px solid #ddd;
       padding: 10px 0;
     }
+
     .total {
       font-weight: bold;
       font-size: 1.2rem;
     }
+
     .cart-controls button {
       margin: 0 5px;
     }
+
     .cart-empty {
       color: #888;
     }
@@ -50,7 +56,7 @@
 </head>
 <body>
 
-<!-- Navbar -->
+<!-- ✅ Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
     <a class="navbar-brand" href="#">🛍️ MyShop</a>
@@ -67,41 +73,21 @@
   </div>
 </nav>
 
-<!-- Search & Clear Cart -->
+<!-- ✅ Search -->
 <div class="container mt-5 mb-4">
-  <div class="d-flex align-items-center gap-2" id="searchform">
-    <input 
-      class="form-control form-control-sm" 
-      type="search" 
-      placeholder="Search..." 
-      aria-label="Search" 
-      id="searchinput" 
-      style="width: 200px; height: 28px;"
-    >
-    <button 
-      class="btn btn-sm btn-primary" 
-      type="submit" 
-      style="height: 28px; padding: 0 15px;"
-    >
-      Search
-    </button>
-    <button 
-      class="btn btn-sm btn-primary" 
-      type="button" 
-      id="clearCartBtn" 
-      style="height: 28px; padding: 0 15px;"
-    >
-      🗑️ Clear
-    </button>
-  </div>
+  <form class="d-flex" role="search" id="searchform">
+    <input class="form-control-lg me-2" type="search" placeholder="Search..." aria-label="Search" id="searchinput">
+    <button class="btn btn-primary btn-lg" type="submit">Search</button>
+  </form>
 </div>
 
-<!-- Product Grid -->
+<!-- ✅ Main Layout -->
 <div class="container">
   <div class="row">
+    <!-- Products -->
     <div class="col-lg-12">
       <div class="row g-4">
-
+        <!-- Repeat this for each product -->
         <div class="col-sm-6 col-md-4">
           <div class="product-card h-100">
             <img src="/pexels-photo-8532616.webp" class="product-img mb-2" alt="Product 1">
@@ -110,7 +96,6 @@
             <button class="btn btn-primary w-100 add-to-cart-btn">Add to Cart</button>
           </div>
         </div>
-
         <div class="col-sm-6 col-md-4">
           <div class="product-card h-100">
             <img src="/pexels-photo-2529148.webp" class="product-img mb-2" alt="Product 2">
@@ -119,7 +104,6 @@
             <button class="btn btn-primary w-100 add-to-cart-btn">Add to Cart</button>
           </div>
         </div>
-
         <div class="col-sm-6 col-md-4">
           <div class="product-card h-100">
             <img src="/pexels-photo-1082528.webp" class="product-img mb-2" alt="Product 3">
@@ -129,45 +113,73 @@
           </div>
         </div>
 
-        <div class="col-sm-6 col-md-4 mt-4">
-          <div class="product-card h-100">
-            <img src="/pexels-photo-701877 (1).webp" class="img-fluid product-img mb-2" alt="Product 4">
-            <h5>back bag</h5>
-            <p>$15</p>
-            <button class="btn btn-primary w-100 add-to-cart-btn">Add to Cart</button>
+          <div class="col-sm-6 col-md-4 mt-4">
+            <div class="product-card h-100">
+              <img src="/pexels-photo-701877 (1).webp" class="img-fluid product-img mb-2" alt="Product 2">
+              <h5>back bag</h5>
+              <p>$15</p>
+              <button class="btn btn-primary w-100">Add to Cart</button>
+            </div>
           </div>
-        </div>
 
-        <div class="col-sm-6 col-md-4 mt-4">
-          <div class="product-card h-100">
-            <img src="/pexels-photo-2905238.webp" class="img-fluid product-img mb-2" alt="Product 5">
-            <h5>knike</h5>
-            <p>$15</p>
-            <button class="btn btn-primary w-100 add-to-cart-btn">Add to Cart</button>
+           <div class="col-sm-6 col-md-4 mt-4">
+            <div class="product-card h-100">
+              <img src="/pexels-photo-2905238.webp" class="img-fluid product-img mb-2" alt="Product 2">
+              <h5>knike</h5>
+              <p>$15</p>
+              <button class="btn btn-primary w-100">Add to Cart</button>
+            </div>
           </div>
-        </div>
 
-        <div class="col-sm-6 col-md-4 mt-4">
-          <div class="product-card h-100">
-            <img src="/pexels-photo-190819 (1).jpeg" class="img-fluid product-img mb-2 w-100" alt="Product 6">
-            <h5>sun glass</h5>
-            <p>$15</p>
-            <button class="btn btn-primary w-100 add-to-cart-btn">Add to Cart</button>
+
+           <div class="col-sm-6 col-md-4 mt-4">
+            <div class="product-card h-100">
+              <img src="/pexels-photo-190819 (1).jpeg" class="img-fluid product-img  mb-2 w-100" alt="Product 2">
+              <h5>sun glass</h5>
+              <p>$15</p>
+              <button class="btn btn-primary w-100">Add to Cart</button>
+            </div>
           </div>
-        </div>
+
 
       </div>
     </div>
   </div>
 </div>
 
-<!-- Cart Overlay -->
+<!-- ✅ Cart Overlay -->
 <div class="cart-overlay" id="cartSection">
   <div class="cart"></div>
 </div>
 
-<!-- JavaScript -->
+<!-- ✅ Script -->
 <script>
+  // Search functionality
+  document.getElementById("searchform").addEventListener("submit", function (e) {
+    e.preventDefault();
+    const searchValue = document.getElementById("searchinput").value.toLowerCase();
+    const productCards = document.querySelectorAll(".product-card");
+
+    if (searchValue.trim() === "") {
+      productCards.forEach(card => card.parentElement.style.display = "block");
+      return;
+    }
+
+    let found = false;
+    productCards.forEach(card => {
+      const title = card.querySelector("h5").textContent.toLowerCase();
+      if (title.includes(searchValue)) {
+        card.parentElement.style.display = "block";
+        found = true;
+      } else {
+        card.parentElement.style.display = "none";
+      }
+    });
+
+    if (!found) alert("No items found.");
+  });
+
+  // Cart logic
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
   function updateCartUI() {
@@ -201,8 +213,7 @@
         <span>Total:</span>
         <span>$${total}</span>
       </div>
-      <button class="btn btn-success w-100 mt-3" id="checkoutBtn">Checkout</button>
-      <div id="userFormContainer" class="mt-3"></div>
+      <button class="btn btn-success w-100 mt-3">Checkout</button>
     `;
 
     document.querySelector(".badge").textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
@@ -234,7 +245,7 @@
     updateCartUI();
   }
 
-  // Add to cart buttons
+  // Bind add to cart buttons
   document.querySelectorAll(".add-to-cart-btn").forEach(button => {
     button.addEventListener("click", () => {
       const card = button.closest(".product-card");
@@ -251,76 +262,6 @@
     updateCartUI();
   });
 
-  // Checkout process
-  document.addEventListener("click", function (e) {
-    if (e.target && e.target.id === "checkoutBtn") {
-      const formHTML = `
-        <div class="mt-3">
-          <input type="text" id="userName" class="form-control mb-2" placeholder="Enter your name" required>
-          <input type="text" id="userAddress" class="form-control mb-2" placeholder="Enter your address" required>
-          <input type="text" id="userPhone" class="form-control mb-2" placeholder="Enter your phone number" required>
-          <button class="btn btn-warning w-100" id="confirmOrder">Confirm Order</button>
-        </div>
-      `;
-      document.getElementById("userFormContainer").innerHTML = formHTML;
-    }
-
-    if (e.target && e.target.id === "confirmOrder") {
-      const name = document.getElementById("userName").value.trim();
-      const address = document.getElementById("userAddress").value.trim();
-      const phone = document.getElementById("userPhone").value.trim();
-
-      if (!name || !address || !phone) {
-        alert("Please fill in all the details.");
-        return;
-      }
-
-      const orderDetails = {
-        user: { name, address, phone },
-        cart,
-        total: cart.reduce((sum, item) => sum + item.price * item.quantity, 0),
-        date: new Date().toLocaleString()
-      };
-
-      localStorage.setItem("order", JSON.stringify(orderDetails));
-      alert("✅ Order placed successfully!");
-
-      cart = [];
-      localStorage.setItem("cart", JSON.stringify(cart));
-      updateCartUI();
-    }
-  });
-
-  // Clear cart button
-  document.getElementById("clearCartBtn").addEventListener("click", function () {
-    if (confirm("Are you sure you want to clear the cart?")) {
-      cart = [];
-      localStorage.setItem("cart", JSON.stringify(cart));
-      updateCartUI();
-    }
-  });
-
-  // Search functionality
-  document.querySelector("#searchform button[type='submit']").addEventListener("click", function () {
-    const query = document.getElementById("searchinput").value.trim().toLowerCase();
-    const productCards = document.querySelectorAll(".product-card");
-
-    productCards.forEach(card => {
-      const productName = card.querySelector("h5").textContent.toLowerCase();
-      card.parentElement.style.display = productName.includes(query) ? "block" : "none";
-    });
-  });
-
-  // Reset product visibility when input is cleared
-  document.getElementById("searchinput").addEventListener("input", function () {
-    if (this.value.trim() === "") {
-      document.querySelectorAll(".product-card").forEach(card => {
-        card.parentElement.style.display = "block";
-      });
-    }
-  });
-
-  // Initial load
   updateCartUI();
 </script>
 </body>
